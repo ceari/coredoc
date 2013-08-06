@@ -87,4 +87,19 @@ public class FunctionDO extends PropertyDO {
             };
         }
     }
+
+    public String getParameterString() {
+        StringBuffer buf = new StringBuffer();
+        Iterator<FunctionParameterDO> it = getParameters();
+        if (it == null) return "()";
+        buf.append("(");
+        while (it.hasNext()) {
+            buf.append(it.next().getName());
+            if (it.hasNext()) {
+                buf.append(", ");
+            }
+        }
+        buf.append(")");
+        return buf.toString();
+    }
 }

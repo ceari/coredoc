@@ -8,6 +8,7 @@
     <patternset id="fileset.resources">
         <include name="**/*properties"/>
         <include name="**/*html"/>
+        <include name="**/*html.erb"/>
         <include name="**/*css"/>
         <include name="**/*js"/>
         <include name="**/*gif"/>

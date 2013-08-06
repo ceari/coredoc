@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import nextapp.coredoc.render.erb.HtmlErbRenderer;
 import org.apache.velocity.app.Velocity;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -145,6 +146,9 @@ public class CoreDoc {
         if ("xml".equals(renderArg)) {
             logger.log(Level.INFO, "Initializing Renderer: XML");
             renderer = new XmlRenderer(instance);    
+        } else if ("erb".equals(renderArg)) {
+            logger.log(Level.INFO, "Initializing Renderer: ERB");
+            renderer = new HtmlErbRenderer(instance);
         } else {
             logger.log(Level.INFO, "Initializing Renderer: HTML");
             renderer = new HtmlRenderer(instance);    
