@@ -3,10 +3,10 @@
 <ul class="breadcrumb">
   #if ($containerName)
   <li>
-    $containerName <span class="divider">/</span>
+    $containerName
   </li>
   #end
-  <li>
+  <li class="active">
     $name
   </li>
 </ul>
@@ -18,8 +18,8 @@
 <dl>
 <dt><strong>Class Hierarchy:</strong></dt>
 <dd>
-<ul style="padding-left: 0px">
-<li style="margin-left: 0px">Object</li>
+<ul>
+<li>Object</li>
 #foreach ($class in $cr.getClassHierarchy(false, true))
 #set ($indent = ($velocityCount * 15) + "px")
 <li style="margin-left: $indent">

@@ -20,6 +20,7 @@ import nextapp.coredoc.model.Node;
 import nextapp.coredoc.render.ClassDO;
 import nextapp.coredoc.render.Renderer;
 import nextapp.coredoc.util.Resource;
+import org.pegdown.PegDownProcessor;
 
 public class HtmlErbRenderer
 extends Renderer {
@@ -60,7 +61,12 @@ extends Renderer {
         context.put("name", classBlock.getName());
         context.put("cr", classDO);
         context.put("containerName", classBlock.getContainerName());
-        context.put("description", classBlock.getDocComment() == null ? null : classBlock.getDocComment().getDescription());;
+        if (classBlock.getDocComment() == null || classBlock.getDocComment().getDescription() == null) {
+            context.put("description", null);
+        } else {
+         context.put("description", new PegDownProcessor().markdownToHtml(classBlock.getDocComment().getDescription()));
+        }
+
         if ((classBlock.getModifiers() & Modifiers.ABSTRACT) != 0) {
             context.put("modifiers", "Abstract");
         }
